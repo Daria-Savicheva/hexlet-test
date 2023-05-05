@@ -20,5 +20,10 @@ export default function solution(content){
   const maxHumidity = getData.map((item) => item[getIndexHumidity]).reduce((acc, item) => acc > item ? acc : item);
   console.log(`Humidity: Min: ${minHumidity}, Max: ${maxHumidity}`) //step 3
 
+  const getIndexOfMaxTemp = head.indexOf('Max Temperature');
+  const getMaxTemp = getData.map((item) => item[getIndexOfMaxTemp]).reduce((acc, item) => acc > item ? acc : item);
+  const getIndexOfDate = head.indexOf('Date');
+  const getHottestDate = getData.filter((day) => day[getIndexOfMaxTemp] === getMaxTemp);
+  console.log(`HottestDay: ${getHottestDate[0][getIndexOfDate]} ${getHottestDate[0][getIndexOfCity]}`);
   // END
 }
