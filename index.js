@@ -27,10 +27,10 @@ export default function solution(content){
   console.log(`HottestDay: ${getHottestDate[0][getIndexOfDate]} ${getHottestDate[0][getIndexOfCity]}`); // step 4
 
   const result = [];
-  for (let city of sortCities){ //в цикле считаем сруднюю температуру по каждому городу
+  for (let city of sortCities){ //в цикле считаем среднюю температуру по каждому городу
     const getTemp = getData.filter((item) => item[getIndexOfCity] === city)
     const getMiddleTemp = getTemp.map((maxTemp) => maxTemp[getIndexOfMaxTemp]).reduce((acc, temp) => acc + Number(temp), 0) / getTemp.length;
-    result.push(Number(getMiddleTemp))
+    result.push(getMiddleTemp);
   }
   const middleMaxTemp = result.reduce((acc, item) => acc > item ? acc : item, 0); //находим максимальную
   const indexHottestCity = result.indexOf(middleMaxTemp); // ищем индекс максимальной температуры 
