@@ -1,15 +1,14 @@
 import _ from 'lodash';
 export default function solution(content){
   // BEGIN
-  const newContent = content.split('\n');
+  const newContent = content.trim().split('\n');
 
   const head = newContent.slice(0, 1).join(',').split(',');
 
-  const count = newContent.slice(1, newContent.length - 1);
+  const count = newContent.slice(1);
   const getData = count.map((city) => city.split(','));
-
   console.log(`Count: ${count.length}`) //step 1
-
+ 
   const getIndexOfCity = head.indexOf('City'); //ищу индекс City
   const cities = getData.map((city) => city[getIndexOfCity]); //все города по индексу
   const sortCities = _.uniq(cities).sort(); //удаляю дубли, привожу в нужный вид
@@ -37,5 +36,5 @@ export default function solution(content){
 
   console.log(`HottestCity: ${sortCities[indexHottestCity]}`); // по индексу максимальной температуры находим город, т.к. идексы ссответствуют(цикл)
  
-  // END
+ // END
 }
